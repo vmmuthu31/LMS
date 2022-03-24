@@ -1,0 +1,68 @@
+<%- include('partials/header'); -%>
+<style media="screen">
+  body{
+    background-color:#ec8fff;
+  },
+  h1{
+    color:#de1d1d;
+  }
+</style>
+<form action="/signup">
+  <h2>Sign up</h2>
+  <label for="username">Enter your Name</label>
+  <input type="text" name="username"  />
+  <label for="email">Email</label>
+  <input type="text" name="email" required />
+  <div class="email error"></div>
+  <label for="password">Password</label>
+  <input type="password" name="password" required />
+  <div class="password error"></div>
+  <label for="image">Upload Image</label> <br>
+  <input type="file" id="image" name="image" value="" required />
+ <br>  <button style="margin-top:20px">Sign up</button> <br>
+  <h6>if you're already registered? <a href="/Login"> Login</a></h6>
+</form>
+
+<%- include('partials/footer'); -%>
+
+<script>
+  const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // reset errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    // get values
+    const username = form.username.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const image = form.image.value;
+
+    try {
+      const res = await fetch('/signup', {
+        method: 'POST',
+        body: JSON.stringify({ username, email, password, image }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/index');
+      }
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+
+  });
+</script>

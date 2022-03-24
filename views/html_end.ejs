@@ -1,0 +1,41 @@
+<%- include('partials/header'); -%>
+<style media="screen">
+  body{
+    background-color:#ec8fff;
+  },
+  h1{
+    color:#de1d1d;
+  }
+
+</style>
+
+<ul class="recipes">
+  <div>  <h2 style=" color:#ffffff; border-radius:36px; margin-top:200px; background-color:#2165db; justify-content:center; text-align:center;font-size:30px; padding:10px"> Html: Part-3</h2></div>
+
+  <li class="recipe">
+    <a href="/" >
+  <a class="jag"  href="/"><iframe width="560" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a>
+  <a href="/index"><input type="submit" onclick="submitClick( )" class="btn btn-primary mx-3" formaction="/update" value="Mark Completed"></a>
+
+  </li>
+  <li class="recipe">
+  <h6 style="margin-top:100px;  padding:25px; justify-content:center">
+    I hope that you learn a lot from this course. Keep Practicing is the key to have consistent knowledge.
+</h6>
+
+  </li>
+</ul>
+
+
+
+
+<%- include('partials/footer'); -%>
+<script type="text/javascript">
+  function submitClick( ) //function shows message after submitting information
+
+   {
+
+   alert("Hope so... You learned what you needed from this course");
+
+   }
+</script>
