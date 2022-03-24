@@ -23,8 +23,19 @@
       <!-- // -->
       <!-- // -->
 
+      <% for(var tasks of data ){ %>
+       <form action="/delete" method="post" class="form-inline my-3">
+         <p><%= tasks.task%></p>
+         <input type="hidden" name="id" value="<%= tasks._id%>">
+         <% if(tasks.status){ %>
 
+         <% }else{ %>
+           <button type="submit"  formaction="/update" class="btn btn-primary mx-3">Mark Completed</button>
+           <% } %>
+           <button type="submit" class="btn btn-danger mx-3">Delete</button>
+       </form>
+      <% } %>
     </div>
-    <script>alert("Your task has been added to the database..")</script>
+
   </body>
 </html>
